@@ -1,0 +1,45 @@
+{
+  "name": "socket.io-apps",
+  "version": "0.0.1",
+  "description": "",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "node src/tests.js",
+    "start": "node src/main.js",
+    "dev": "./node_modules/.bin/webpack -dw --progress",
+    "build": "./node_modules/.bin/webpack -p --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/colwynmyself/socket.io-apps.git"
+  },
+  "author": "Colwyn Fritze-Moor <colwyn.myself@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/colwynmyself/socket.io-apps/issues"
+  },
+  "homepage": "https://github.com/colwynmyself/socket.io-apps#readme",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "debug": "^2.6.6",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.2",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "socket.io": "^2.0.1",
+    "socket.io-client": "^2.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.0.0",
+    "webpack": "^2.5.1"
+  }
+}

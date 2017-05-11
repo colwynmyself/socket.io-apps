@@ -1,0 +1,9 @@
+{
+    "globals": {
+        "window": true,
+        "document": true
+    },
+    "rules": {
+        "react/jsx-indent": [2, 4]
+    }
+}
