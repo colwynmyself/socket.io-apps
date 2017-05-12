@@ -1,14 +1,20 @@
-module.exports = (Debug, socketio, server) => {
+module.exports = (Debug, io, db) => {
     const debug = Debug('socketapps:socket')
-    const io = socketio(server)
-    debug('initializing socket.io connection')
+
+    debug('initializing socket.io')
+    const clientList = new db.ClientList()
 
     io.on('connection', socket => {
         debug('socket.io connection established')
 
         // Events
-        socket.on('event', data => {
-            debug(data)
+        socket.on('join', data => {
+            clientList.addClient(data)
+            io.emit('listClients', clientList.listAll())
+        })
+
+        clientList.on('addClient', client => {
+            io.emit('addClient', client)
         })
     })
 }

@@ -4,6 +4,7 @@
         "document": true
     },
     "rules": {
-        "react/jsx-indent": [2, 4]
+        "react/jsx-indent": [2, 4],
+        "import/extensions": "off"
     }
 }

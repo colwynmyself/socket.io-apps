@@ -15,7 +15,8 @@
         "no-console": "off",
         "prefer-arrow-callback": "warn",
         "arrow-parens": "off",
-        "import/no-dynamic-require": "off"
+        "import/no-dynamic-require": "off",
+        "max-len": [1, 160]
     },
     "env": {
         "es6": true,
