@@ -3,46 +3,47 @@ const uuid = require('uuid')
 
 module.exports = Debug => {
     const debug = Debug('socketapp:persistence:database')
-    const redisClient = redis.createClient()
+    const redisUser = redis.createClient()
 
     // Redis event logging
-    redisClient.on('warning', warning => {
+    redisUser.on('warning', warning => {
         debug('redis warning', warning)
     })
-    redisClient.on('ready', () => {
-        debug('redis client ready')
+    redisUser.on('ready', () => {
+        debug('redis user ready')
     })
-    redisClient.on('reconnecting', (delay, attempt) => {
+    redisUser.on('reconnecting', (delay, attempt) => {
         debug(`redis connection reconnecting. delay: ${delay}, attempt: ${attempt}`)
     })
-    redisClient.on('error', error => {
+    redisUser.on('error', error => {
         debug('redis error', error)
     })
 
-    class Client {
+    class User {
         constructor(data) {
-            this.data = data
             this.id = uuid.v4()
+            this.data = data
         }
     }
 
-    class ClientList {
+    class UserList {
         constructor() {
-            this.clients = []
+            this.id = uuid.v4()
+            this.users = []
             this.observers = []
         }
 
-        addClient(data) {
-            const client = new Client(data)
-            this.clients.push(client)
+        addUser(data) {
+            const user = new User(data)
+            this.users.push(user)
 
-            this.observers.filter(o => o.event === 'addClient').forEach(o => {
-                o.callback(client)
+            this.observers.filter(o => o.event === 'addUser').forEach(o => {
+                o.callback(user)
             })
         }
 
         listAll() {
-            return this.clients
+            return this.users
         }
 
         on(event, callback) {
@@ -54,7 +55,7 @@ module.exports = Debug => {
     }
 
     return {
-        Client,
-        ClientList,
+        User,
+        UserList,
     }
 }

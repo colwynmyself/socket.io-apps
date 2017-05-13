@@ -2,19 +2,19 @@ module.exports = (Debug, io, db) => {
     const debug = Debug('socketapps:socket')
 
     debug('initializing socket.io')
-    const clientList = new db.ClientList()
+    const userList = new db.UserList()
 
     io.on('connection', socket => {
         debug('socket.io connection established')
 
         // Events
         socket.on('join', data => {
-            clientList.addClient(data)
-            io.emit('listClients', clientList.listAll())
+            userList.addUser(data)
+            io.emit('listUsers', userList.listAll())
         })
 
-        clientList.on('addClient', client => {
-            io.emit('addClient', client)
+        userList.on('addUser', user => {
+            io.emit('addUser', user)
         })
     })
 }

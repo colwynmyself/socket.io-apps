@@ -1,4 +1,3 @@
-const webpack = require('webpack')
 const path = require('path')
 
 const BUILD_DIR = path.resolve(__dirname, 'public', 'js')
@@ -16,6 +15,10 @@ const config = {
                 test: /\.jsx?/,
                 include: APP_DIR,
                 loader: 'babel-loader',
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader',
             },
         ],
     },
